@@ -32,7 +32,7 @@ The backend handles data storage and processing using MySQL, while the frontend 
 ## 🚀 Features
 
 ### 🔧 Backend (FastAPI)
-- Add / view / delete expenses  
+- Add / view expenses  
 - MySQL integration  
 - Layered logic (db helper, endpoints)  
 - Logging included  
@@ -58,7 +58,7 @@ Streamlit UI  →  FastAPI Backend  →  MySQL Database
 ## 📂 Folder Structure
 
 ```
-project/
+expense-management-system/
 │
 ├── backend/
 │   ├── server.py
@@ -66,16 +66,19 @@ project/
 │   ├── logging_setup.py
 │
 ├── frontend/
-│   └── app.py
+│   ├── app.py
+│   ├── add_update_ui.py
+│   ├── analytics_ui.py
 │
 ├── tests/
+│   ├── backend/test_db_helper.py
+│   ├── conftest.py
 │
-├── analytics_ui_demo1.png
-├── analytics_ui_demo2.png
-├── app_frontend_ui.png
-│
+├── .env.example
+├── schema.sql
 ├── requirements.txt
 └── README.md
+
 ```
 
 ---
@@ -98,7 +101,6 @@ project/
 |--------|----------|-------------|
 | POST   | `/expenses/add`           | Add expense |
 | GET    | `/expenses/{date}`        | Get expenses for a date |
-| DELETE | `/expenses/{date}`        | Delete expenses for a date |
 | GET    | `/summary/{start}/{end}`  | Summary analytics |
 
 ---
@@ -107,16 +109,21 @@ project/
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-repo/expense-management-system.git
+git clone https://github.com/kaushiks-info/expense-management-system.git
 cd expense-management-system
 ```
 
 ### 2️⃣ Create and Activate Virtual Environment
 ```bash
 python -m venv venv
-source venv/bin/activate        # macOS/Linux
-venv\Scriptsctivate           # Windows
+# macOS / Linux
+source venv/bin/activate
+# Windows (PowerShell)
+venv\Scripts\Activate.ps1
+# Windows (cmd)
+venv\Scripts\activate.bat
 ```
+
 
 ### 3️⃣ Install Dependencies
 ```bash
